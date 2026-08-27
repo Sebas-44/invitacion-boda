@@ -1,0 +1,138 @@
+---
+// src/components/Home.astro
+---
+
+<section class="relative w-full min-h-[85vh] flex flex-col items-center justify-between text-center px-6 py-12 portada-fondo">
+  
+  <!-- Degradado inferior estructural -->
+  <div class="absolute inset-x-0 bottom-0 h-48 degradado-transicion pointer-events-none"></div>
+
+  <div></div> <!-- Espaciador -->
+
+  <!-- MARCO EXTERIOR -->
+  <div class="relative z-10 my-auto marco-exterior">
+    
+    <!-- MARCO INTERIOR (Contenido) -->
+    <div class="marco-interior flex flex-col items-center max-w-sm">
+      
+      <span class="etiqueta-superior">
+        ¡Nos Casamos!
+      </span>
+
+      <h1 class="nombre-principal">Gonzalo</h1>
+      <h1 class="simbolo-union">&</h1>
+      <h1 class="nombre-principal">...</h1>
+
+      <!-- Divisor -->
+      <div class="flex items-center justify-center w-full max-w-[160px] my-5 gap-2">
+        <div class="linea-divisor"></div>
+        <div class="rombo-divisor"></div>
+        <div class="linea-divisor"></div>
+      </div>
+
+      <p class="fecha-boda">
+        28.08.26
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Indicador para hacer scroll -->
+  <div class="relative z-10 flex flex-col items-center gap-1 indicador-scroll animate-bounce">
+    <span>Deslizá</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+
+</section>
+
+<style>
+  /* =========================================
+     ESTILOS VISUALES (CSS PURO)
+     ========================================= */
+
+  .portada-fondo {
+    background-image: url('/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .degradado-transicion {
+    background: linear-gradient(to bottom, transparent, #ffffff);
+  }
+
+  /* EFECTO DOBLE CRISTAL (Glassmorphism) */
+  .marco-exterior {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.3); /* Transparencia alta */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .marco-interior {
+    padding: 2.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.65); /* Más sólido para que se lea */
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* TIPOGRAFÍAS Y COLORES */
+  .etiqueta-superior {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #6b21a8; /* Morado oscuro */
+    margin-bottom: 0.75rem;
+  }
+
+  .nombre-principal {
+    font-family: 'Playfair Display', Georgia, serif; /* Acá cambiarás la fuente después */
+    font-size: 3.75rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0.025em;
+    color: #7e22ce; /* Morado intermedio */
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .simbolo-union {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.75rem;
+    font-weight: 300;
+    color: #ffffff; /* Blanco */
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* DIVISOR GRÁFICO */
+  .linea-divisor {
+    height: 1px;
+    flex: 1 1 0%;
+    background-color: rgba(192, 132, 252, 0.6);
+  }
+
+  .rombo-divisor {
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: rotate(45deg);
+    border: 1px solid #a855f7;
+    background-color: rgba(233, 213, 255, 0.5);
+  }
+
+  .fecha-boda {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #1f2937; /* Gris muy oscuro */
+  }
+
+  .indicador-scroll {
+    color: #4c1d95;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+</style>

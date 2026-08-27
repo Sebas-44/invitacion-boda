@@ -1,11 +1,86 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Holaaaaaaaaa Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// src/pages/index.astro
+import Hero from '../components/Hero.astro';
+import Details from '../components/Details.astro';
+import RSVP from '../components/RSVP.astro';
+import Home from '../components/Home.astro';
+import Countdown from '../components/Countdown.astro';
+import Divider from '../components/Divider.astro';
+import Calendar from '../components/Calendar.astro';
+import Location from '../components/Location.astro';
+import Program from '../components/Program.astro';
+import Qr from '../components/Qr.astro';
+import Photos from '../components/Photos.astro';
+import Closing from '../components/Closing.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuestra Boda</title>
+  </head>
+
+  <!-- Fondo gris/liso para que la tarjeta resalte -->
+  <body class="bg-gray-100 min-h-screen flex justify-center py-6 px-4">
+
+    <!-- CONTENEDOR VERTICAL (Sin p-6 para que la foto de Home toque los bordes) -->
+    <main class="w-full max-w-md bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden flex flex-col text-center">
+      
+      <!-- Portada con foto de fondo -->
+    <Home />   
+
+	<Divider />
+
+    <div class="px-6 py-6 space-y-8">
+   		 <Countdown />
+   		 <!-- Acá irán Calendar, Details, etc. -->
+		  <Calendar />
+  	</div>
+	
+	<Divider />	
+
+	<Location />
+
+	<Divider />	
+
+	<Program />
+
+	<Divider />
+
+	<Qr />
+
+	<Divider />
+
+	<RSVP />
+
+	<Divider />
+
+	<Photos />
+	
+	<Divider />
+	
+	<Closing />
+	
+
+      <!-- Contenedor para las siguientes secciones (les devuelve el padding y separación) -->
+    <div class="px-6 py-12 space-y-12">
+    <Details />
+
+    </div>
+
+
+    </main>
+
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap');
+
+  .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+</style>

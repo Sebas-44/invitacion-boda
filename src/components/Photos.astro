@@ -1,0 +1,79 @@
+---
+// src/components/Gallery.astro
+---
+
+<section class="flex flex-col items-center justify-center w-full px-4 py-16">
+  
+  <!-- Encabezado -->
+  <div class="text-center mb-10">
+    <span class="etiqueta-galeria">Nuestros Momentos</span>
+    <h2 class="titulo-galeria">Un poco de nuestra historia</h2>
+  </div>
+
+  <!-- Grilla de Fotos (Collage) -->
+  <div class="grid grid-cols-2 gap-3 w-full max-w-md mx-auto">
+    
+    <!-- Foto 1: Principal (Ocupa el ancho completo) -->
+    <div class="contenedor-foto col-span-2 aspect-video sm:aspect-[4/3]">
+      <!-- Reemplazá el src por tu foto real en la carpeta public/ -->
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Foto principal de los novios" class="imagen-galeria" />
+    </div>
+
+    <!-- Foto 2: Izquierda -->
+    <div class="contenedor-foto aspect-square">
+      <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=400&auto=format&fit=crop" alt="Momento especial" class="imagen-galeria" />
+    </div>
+
+    <!-- Foto 3: Derecha -->
+    <div class="contenedor-foto aspect-square">
+      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400&auto=format&fit=crop" alt="Momento divertido" class="imagen-galeria" />
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+  /* =========================================
+     ESTILOS VISUALES - GALERÍA DE FOTOS
+     ========================================= */
+
+  .etiqueta-galeria {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b21a8; /* Morado base */
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .titulo-galeria {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.25rem;
+    font-style: italic;
+    color: #4c1d95; /* Morado oscuro */
+  }
+
+  /* CONTENEDOR DE CADA FOTO */
+  .contenedor-foto {
+    overflow: hidden;
+    border-radius: 1rem; /* Bordes suaves */
+    box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    border: 1px solid rgba(216, 180, 254, 0.3); /* Borde sutil morado claro */
+    background-color: #f3f4f6; /* Fondo de carga gris muy claro */
+  }
+
+  /* COMPORTAMIENTO DE LA IMAGEN */
+  .imagen-galeria {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la foto llene el espacio sin deformarse */
+    transition: transform 0.5s ease; /* Transición suave para el zoom */
+  }
+
+  /* Efecto zoom sutil al pasar el cursor o tocar en móviles */
+  .contenedor-foto:hover .imagen-galeria {
+    transform: scale(1.05);
+  }
+</style>

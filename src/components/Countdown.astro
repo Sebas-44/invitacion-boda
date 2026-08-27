@@ -1,0 +1,81 @@
+---
+// src/components/Countdown.astro
+---
+
+<section class="flex flex-col items-center justify-center text-center px-4 py-8">
+  
+  <span class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-purple-800 uppercase mb-2">
+    Falta muy poco
+  </span>
+  
+  <h2 class="font-serif text-2xl sm:text-3xl text-gray-900 mb-6 font-normal">
+    Cuenta Regresiva
+  </h2>
+
+  <!-- Contenedores de tiempo -->
+  <div class="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-xs">
+    
+    <!-- Días -->
+    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
+      <span id="days" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
+      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Días</span>
+    </div>
+
+    <!-- Horas -->
+    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
+      <span id="hours" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
+      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Hs</span>
+    </div>
+
+    <!-- Minutos -->
+    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
+      <span id="minutes" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
+      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Min</span>
+    </div>
+
+    <!-- Segundos -->
+    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
+      <span id="seconds" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
+      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Seg</span>
+    </div>
+
+  </div>
+
+  <!-- Divisor sutil inferior -->
+  <div class="w-12 h-[1px] bg-purple-200 mt-8"></div>
+
+</section>
+
+<script>
+  // DEFINÍ LA FECHA Y HORA DE TU BODA (Año, Mes - 1, Día, Hora, Minutos)
+  // Formato: Año, Mes (0 = Enero, 7 = Agosto, 11 = Diciembre), Día, Hora, Minutos
+  const weddingDate = new Date(2026, 7, 28, 18, 0, 0).getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const difference = weddingDate - now;
+
+    if (difference <= 0) {
+      document.getElementById("days")!.innerText = "00";
+      document.getElementById("hours")!.innerText = "00";
+      document.getElementById("minutes")!.innerText = "00";
+      document.getElementById("seconds")!.innerText = "00";
+      return;
+    }
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    const pad = (num: number) => String(num).padStart(2, "0");
+
+    document.getElementById("days")!.innerText = pad(days);
+    document.getElementById("hours")!.innerText = pad(hours);
+    document.getElementById("minutes")!.innerText = pad(minutes);
+    document.getElementById("seconds")!.innerText = pad(seconds);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

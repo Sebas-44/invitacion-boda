@@ -1,0 +1,276 @@
+---
+// src/components/RSVP.astro
+
+// Reemplazá los ceros por tu número de Jujuy (o el que uses)
+const numeroWhatsApp = "5493880000000";
+---
+
+<section class="flex flex-col items-center justify-center w-full px-4 py-16">
+  
+  <div class="tarjeta-formulario w-full max-w-sm flex flex-col p-8">
+    
+    <!-- Encabezado -->
+    <div class="text-center mb-6">
+      <span class="etiqueta-superior">Confirmá tu asistencia</span>
+
+      <p class="texto-fecha">Respondé antes del 15 de Agosto, 2026</p>
+    </div>
+
+    <!-- Formulario -->
+    <div id="rsvp-form" class="flex flex-col gap-5">
+      
+      <!-- Nombre Principal -->
+      <div class="grupo-input">
+        <label for="nombre-principal" class="label-formulario">Tu Nombre</label>
+        <input type="text" id="nombre-principal" placeholder="Nombre y apellido" class="input-formulario" />
+      </div>
+
+      <!-- Asistencia (Botones de selección) -->
+      <div class="grupo-input">
+        <label class="label-formulario">¿Podrás asistir?</label>
+        <div class="flex gap-3 mt-1">
+          <button id="btn-si" type="button" class="boton-opcion activo flex-1">SÍ, ESTARÉ</button>
+          <button id="btn-no" type="button" class="boton-opcion inactivo flex-1">NO PODRÉ</button>
+        </div>
+      </div>
+
+      <!-- Sección de Acompañantes (Se oculta si dice que NO asiste) -->
+      <div id="seccion-acompanantes" class="flex flex-col gap-4 transition-all duration-300">
+        
+        <div class="grupo-input">
+          <label for="select-acompanantes" class="label-formulario">Número de acompañantes</label>
+          <div class="relative">
+            <select id="select-acompanantes" class="input-formulario appearance-none w-full cursor-pointer pr-8">
+              <option value="0">Sin acompañantes</option>
+              <option value="1">1 acompañante</option>
+              <option value="2">2 acompañantes</option>
+              <option value="3">3 acompañantes</option>
+              <option value="4">4 acompañantes</option>
+              <option value="5">5 acompañantes</option>
+            </select>
+            <!-- Flechita del select -->
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-purple-800">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenedor dinámico donde aparecerán los inputs de los nombres -->
+        <div id="nombres-acompanantes-container" class="flex flex-col gap-3"></div>
+
+      </div>
+
+      <!-- Botón Enviar -->
+      <button id="btn-enviar" type="button" class="boton-enviar mt-4">
+        CONFIRMAR ASISTENCIA
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+  /* =========================================
+     ESTILOS VISUALES - FORMULARIO RSVP
+     ========================================= */
+
+  .tarjeta-formulario {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border: 1px solid rgba(216, 180, 254, 0.4); /* Borde morado muy clarito */
+  }
+
+  .etiqueta-superior {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7e22ce;
+  }
+
+  .titulo-formulario {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: #4c1d95;
+    margin: 0.25rem 0;
+  }
+
+  .texto-fecha {
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    color: #6b21a8;
+  }
+
+  .grupo-input {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .label-formulario {
+    font-family: sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7e22ce;
+    margin-bottom: 0.25rem;
+  }
+
+  .input-formulario {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+    background-color: #ffffff;
+    border: 1px solid #c084fc; /* Borde morado */
+    border-radius: 0.75rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .input-formulario:focus {
+    border-color: #6b21a8;
+    box-shadow: 0 0 0 2px rgba(107, 33, 168, 0.2);
+  }
+
+  .input-formulario::placeholder {
+    color: #a78bfa;
+    font-weight: 300;
+  }
+
+  /* ESTILOS DE LOS BOTONES DE ASISTENCIA */
+  .boton-opcion {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+    border: 1px solid #6b21a8;
+  }
+
+  .boton-opcion.activo {
+    background-color: #6b21a8;
+    color: #ffffff;
+  }
+
+  .boton-opcion.inactivo {
+    background-color: transparent;
+    color: #6b21a8;
+  }
+
+  /* BOTÓN FINAL DE ENVIAR */
+  .boton-enviar {
+    width: 100%;
+    padding: 1rem;
+    background-color: #6b21a8;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 0.75rem;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+
+  .boton-enviar:hover {
+    background-color: #4c1d95;
+  }
+  
+  .boton-enviar:active {
+    transform: scale(0.98);
+  }
+</style>
+
+<script>
+  // LÓGICA INTERACTIVA DEL FORMULARIO
+  const btnSi = document.getElementById('btn-si');
+  const btnNo = document.getElementById('btn-no');
+  const seccionAcompanantes = document.getElementById('seccion-acompanantes');
+  const selectAcompanantes = document.getElementById('select-acompanantes') as HTMLSelectElement;
+  const contenedorNombres = document.getElementById('nombres-acompanantes-container');
+  const btnEnviar = document.getElementById('btn-enviar');
+  const inputNombrePrincipal = document.getElementById('nombre-principal') as HTMLInputElement;
+
+  let asistira = true;
+
+  // Lógica para cambiar entre SÍ y NO
+  btnSi?.addEventListener('click', () => {
+    asistira = true;
+    btnSi.classList.add('activo');
+    btnSi.classList.remove('inactivo');
+    btnNo?.classList.add('inactivo');
+    btnNo?.classList.remove('activo');
+    seccionAcompanantes?.classList.remove('hidden');
+  });
+
+  btnNo?.addEventListener('click', () => {
+    asistira = false;
+    btnNo.classList.add('activo');
+    btnNo.classList.remove('inactivo');
+    btnSi?.classList.add('inactivo');
+    btnSi?.classList.remove('activo');
+    seccionAcompanantes?.classList.add('hidden'); // Ocultar sección de acompañantes
+  });
+
+  // Lógica para generar inputs dinámicos de acompañantes
+  selectAcompanantes?.addEventListener('change', (e) => {
+    const cantidad = parseInt((e.target as HTMLSelectElement).value);
+    
+    if (contenedorNombres) {
+      contenedorNombres.innerHTML = ''; // Limpiar inputs anteriores
+      
+      for (let i = 1; i <= cantidad; i++) {
+        const div = document.createElement('div');
+        div.className = 'grupo-input';
+        div.innerHTML = `
+          <label class="label-formulario text-[0.7rem] text-purple-600">Nombre del acompañante ${i}</label>
+          <input type="text" class="input-formulario input-acompanante !py-2 !text-sm" placeholder="Nombre y apellido" required />
+        `;
+        contenedorNombres.appendChild(div);
+      }
+    }
+  });
+
+  // Lógica para enviar por WhatsApp
+  btnEnviar?.addEventListener('click', () => {
+    const nombre = inputNombrePrincipal?.value.trim();
+    
+    if (!nombre) {
+      alert("Por favor, ingresá tu nombre.");
+      return;
+    }
+
+    const numeroWa = "5493880000000"; // PONER TU NÚMERO ACÁ TAMBIÉN
+    let mensaje = "";
+
+    if (!asistira) {
+      mensaje = `¡Hola! Soy ${nombre}. Lamentablemente NO podré asistir a la boda. ¡Les deseo lo mejor!`;
+    } else {
+      const cantidad = parseInt(selectAcompanantes?.value || "0");
+      
+      if (cantidad === 0) {
+        mensaje = `¡Hola! Soy ${nombre}. Confirmo mi asistencia a la boda. Iré sin acompañantes. ¡Ahí nos vemos!`;
+      } else {
+        // Recopilar los nombres de los acompañantes
+        const inputsAcompanantes = document.querySelectorAll('.input-acompanante');
+        let nombresExtra: string[] = []; // <-- Corrección: definimos que es un array de strings
+        
+        inputsAcompanantes.forEach((input) => {
+          const inputHTML = input as HTMLInputElement; // Corrección: definimos el tipo de elemento HTML
+          if (inputHTML.value.trim() !== "") {
+            nombresExtra.push(inputHTML.value.trim());
+          }
+        });
+      }
+    }
+
+    // Codificar mensaje y abrir WhatsApp
+    const url = `https://wa.me/${numeroWa}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  });
+</script>

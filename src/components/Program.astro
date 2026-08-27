@@ -1,0 +1,161 @@
+---
+// src/components/Itinerary.astro
+---
+
+<section class="flex flex-col items-center justify-center w-full px-4 py-12">
+  
+  <!-- Encabezado -->
+  <div class="text-center mb-10">
+    <h2 class="titulo-itinerario">Itinerario de la noche</h2>
+    <p class="subtitulo-itinerario">Estos son algunos momentos que vamos a compartir</p>
+  </div>
+
+  <!-- Contenedor Principal de la Línea de Tiempo -->
+  <div class="relative w-full max-w-md flex flex-col gap-10">
+    
+    <!-- Línea vertical central que conecta todo -->
+    <div class="linea-central absolute left-1/2 top-4 bottom-4 -translate-x-1/2"></div>
+
+    <!-- ITEM 1: Ceremonia -->
+    <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+      <!-- Hora -->
+      <div class="text-right pr-2">
+        <span class="hora-evento">19:00</span>
+      </div>
+      <!-- Ícono -->
+      <div class="circulo-icono relative z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Ícono de Anillos -->
+          <circle cx="9" cy="12" r="5" stroke-width="1.5"></circle>
+          <circle cx="15" cy="12" r="5" stroke-width="1.5"></circle>
+        </svg>
+      </div>
+      <!-- Detalles -->
+      <div class="text-left pl-2">
+        <h3 class="titulo-evento">CEREMONIA</h3>
+        <p class="descripcion-evento">Comienzo de la celebración.</p>
+        <p class="lugar-evento">CAPILLA SAN IGNACIO</p>
+      </div>
+    </div>
+
+    <!-- ITEM 2: Recepción -->
+    <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+      <!-- Hora -->
+      <div class="text-right pr-2">
+        <span class="hora-evento">20:30</span>
+      </div>
+      <!-- Ícono -->
+      <div class="circulo-icono relative z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Ícono de Plato y Cubiertos -->
+          <circle cx="12" cy="12" r="4" stroke-width="1.5"></circle>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 8v8M7 8v8M16 8v8"></path>
+        </svg>
+      </div>
+      <!-- Detalles -->
+      <div class="text-left pl-2">
+        <h3 class="titulo-evento">RECEPCION</h3>
+        <p class="descripcion-evento">Cocktail, brindis y bienvenida.</p>
+        <p class="lugar-evento">SALON VILLA MOON</p>
+      </div>
+    </div>
+
+    <!-- ITEM 3: Fiesta -->
+    <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
+      <!-- Hora -->
+      <div class="text-right pr-2">
+        <span class="hora-evento">22:00</span>
+      </div>
+      <!-- Ícono -->
+      <div class="circulo-icono relative z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Ícono de Fiesta / Destellos -->
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1M12 20v1M4.22 4.22l.707.707M19.07 19.07l.707.707M3 12h1M20 12h1M4.22 19.78l.707-.707M19.07 4.93l.707-.707"></path>
+          <circle cx="12" cy="12" r="3" stroke-width="1.5"></circle>
+        </svg>
+      </div>
+      <!-- Detalles -->
+      <div class="text-left pl-2">
+        <h3 class="titulo-evento">CENA Y FIESTA</h3>
+        <p class="descripcion-evento">A celebrar juntos.</p>
+        <p class="lugar-evento">SALON VILLA MOON</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* =========================================
+     ESTILOS VISUALES - ITINERARIO
+     ========================================= */
+
+  .titulo-itinerario {
+    font-family: 'Playfair Display', Georgia, serif; /* Fuente elegante */
+    font-size: 2.25rem;
+    font-style: italic;
+    color: #581c87; /* Cambiar a #4d7c0f para verde oliva */
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitulo-itinerario {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    color: #4b5563; /* Gris oscuro */
+  }
+
+  /* LA LÍNEA CENTRAL */
+  .linea-central {
+    width: 1px;
+    background-color: #d8b4fe; /* Cambiar a #cbd5e1 para gris sutil */
+    z-index: 0;
+  }
+
+  /* CÍRCULOS DE LOS ÍCONOS */
+  .circulo-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #ffffff;
+    border-radius: 9999px;
+    color: #7e22ce; /* Color del ícono */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(216, 180, 254, 0.3);
+  }
+
+  /* TEXTO DE LA HORA (Izquierda) */
+  .hora-evento {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-style: italic;
+    color: #6b21a8; /* Cambiar a verde si preferís */
+  }
+
+  /* TEXTOS DE LOS DETALLES (Derecha) */
+  .titulo-evento {
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: #111827;
+    margin-bottom: 0.2rem;
+  }
+
+  .descripcion-evento {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #4b5563;
+    margin-bottom: 0.2rem;
+  }
+
+  .lugar-evento {
+    font-family: sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    text-transform: uppercase;
+  }
+</style>

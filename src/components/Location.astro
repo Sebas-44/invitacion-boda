@@ -1,0 +1,103 @@
+---
+// src/components/Location.astro
+---
+
+<section class="flex flex-col items-center justify-center w-full px-4 py-10">
+  
+  <span class="etiqueta-seccion">Dónde y Cuándo</span>
+  <h2 class="titulo-seccion">La Ceremonia</h2>
+
+  <!-- ESTRUCTURA DE LA TARJETA (Tailwind para el layout flexbox) -->
+  <div class="tarjeta-ubicacion w-full max-w-sm flex flex-col items-center text-center mt-6">
+    
+    <!-- Ícono de Mapa -->
+    <svg class="icono-mapa w-8 h-8 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+    </svg>
+
+    <!-- Datos -->
+    <h3 class="nombre-lugar">Catedral Basílica</h3>
+    <p class="texto-direccion">San Salvador de Jujuy</p>
+    <p class="texto-horario">18:00 hs</p>
+
+    <!-- Botón -->
+    <a href="https://www.google.com/maps?sca_esv=f814840d80206240&output=search&q=ubicacion+abra+pampa&source=lnms&fbs=ABfTbFUDadgeu2mn4mYJ8iEZ1GUDd8ABuXxNzQEi57SWOuuPdWieN_sFFlVnsqgdADYGYEQ-84Lt5KN19GYZEl5XI3oUMG98_Pf6KJAx1QiMCs1pv2xY5sFmEpVUaZvA-rcWqtygpu7-e2QmJURX4PoN-rELhUkq3sVkyP6Pdc4IUMGiVtSqK7qUS3QS4PeWlkcseFpGUPxPsJVKcsxQWMiOTaFeB-aQzw&entry=mc&ved=1t:200715&ictx=111" target="_blank" rel="noopener noreferrer" class="boton-mapa mt-6">
+      Ver en Google Maps
+    </a>
+
+  </div>
+</section>
+
+<style>
+  /* =========================================
+     ESTILOS VISUALES DE LA UBICACIÓN
+     ========================================= */
+
+  .etiqueta-seccion {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b21a8; /* Morado base */
+  }
+
+  .titulo-seccion {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.25rem;
+    color: #111827; /* Gris muy oscuro casi negro */
+    margin-bottom: 0.5rem;
+  }
+
+  .tarjeta-ubicacion {
+    padding: 2.5rem 1.5rem;
+    background-color: rgba(250, 245, 255, 0.7); /* Fondo morado súper clarito */
+    border: 1px solid rgba(216, 180, 254, 0.5); /* Borde sutil */
+    border-radius: 1.5rem; /* Esquinas redondeadas (borrar si querés puntas rectas) */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .icono-mapa {
+    color: #7e22ce;
+  }
+
+  .nombre-lugar {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    color: #4c1d95;
+    margin-bottom: 0.5rem;
+  }
+
+  .texto-direccion {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+
+  .texto-horario {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    color: #6b21a8;
+  }
+
+  /* ESTILO DEL BOTÓN */
+  .boton-mapa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #581c87;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px; /* Forma de píldora */
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .boton-mapa:hover {
+    background-color: #4c1d95;
+    transform: scale(1.05); /* Se agranda un poquito al pasar el mouse */
+  }
+</style>
