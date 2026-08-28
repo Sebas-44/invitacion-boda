@@ -2,43 +2,39 @@
 // src/components/Home.astro
 ---
 
-<section class="relative w-full min-h-[85vh] flex flex-col items-center justify-between text-center px-6 py-12 portada-fondo">
+<section class="relative w-full min-h-[85vh] flex flex-col items-center justify-start pt-45 text-center px-6 py-12 portada-fondo">
   
   <!-- Degradado inferior estructural -->
   <div class="absolute inset-x-0 bottom-0 h-48 degradado-transicion pointer-events-none"></div>
-
-  <div></div> <!-- Espaciador -->
-
-  <!-- MARCO EXTERIOR -->
-  <div class="relative z-10 my-auto marco-exterior">
+  <div class="particulas-viento"></div>
+  <!-- Contenedor Principal Limpio (Sin los divs vacíos) -->
+  <div class="relative z-10 flex flex-col items-center w-full max-w-md mx-auto">
     
-    <!-- MARCO INTERIOR (Contenido) -->
-    <div class="marco-interior flex flex-col items-center max-w-sm">
-      
-      <span class="etiqueta-superior">
-        ¡Nos Casamos!
-      </span>
+  <!-- 1. Etiqueta superior (Aparece primero) -->
+  <span class="etiqueta-superior animacion-entrada delay-1">
+  ¡Nos casamos!
+  </span>
+  <!-- 2. Primer nombre -->
+  <h1 class="nombre-principal animacion-entrada delay-2">Carla</h1>
+  <!-- 3. Unión -->
+  <h3 class="simbolo-union animacion-entrada delay-3">y</h3>
+  <!-- 4. Segundo nombre -->
+  <h1 class="nombre-principal animacion-entrada delay-4">Gonzalo</h1>
+  <!-- 5. Divisor y Fecha (Aparecen juntos al final) -->
+  <div class="flex items-center justify-center w-full max-w-[280px] mt-12 mb-8 gap-3 animacion-entrada delay-5">
+  <div class="linea-divisor"></div>
+  <div class="rombo-divisor"></div>
+  <div class="linea-divisor"></div>
+  </div>
 
-      <h1 class="nombre-principal">Nombre</h1>
-      <h1 class="simbolo-union">&</h1>
-      <h1 class="nombre-principal">Nombre</h1>
+<p class="fecha-boda animacion-entrada delay-5">
+  28 . 08 . 26
+</p>
 
-      <!-- Divisor -->
-      <div class="flex items-center justify-center w-full max-w-[160px] my-5 gap-2">
-        <div class="linea-divisor"></div>
-        <div class="rombo-divisor"></div>
-        <div class="linea-divisor"></div>
-      </div>
-
-      <p class="fecha-boda">
-        28.08.26
-      </p>
-
-    </div>
   </div>
 
   <!-- Indicador para hacer scroll -->
-  <div class="relative z-10 flex flex-col items-center gap-1 indicador-scroll animate-bounce">
+  <div class=" relative z-10 mt-16 flex flex-col items-center gap-2 indicador-scroll animate-bounce ">
     <span>Deslizá</span>
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -49,11 +45,11 @@
 
 <style>
   /* =========================================
-     ESTILOS VISUALES (CSS PURO)
+     ESTILOS VISUALES - PORTADA REFINADA
      ========================================= */
 
   .portada-fondo {
-    background-image: url('/fondo.jpg');
+    background-image: url('/fondo2-flor.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -62,77 +58,149 @@
     background: linear-gradient(to bottom, transparent, #ffffff);
   }
 
-  /* EFECTO DOBLE CRISTAL (Glassmorphism) */
-  .marco-exterior {
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.3); /* Transparencia alta */
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
-
-  .marco-interior {
-    padding: 2.5rem 2rem;
-    background-color: rgba(255, 255, 255, 0.65); /* Más sólido para que se lea */
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
-
   /* TIPOGRAFÍAS Y COLORES */
   .etiqueta-superior {
-    font-size: 0.875rem;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase; 
+    letter-spacing: 0.15em;    
     font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #6b21a8; /* Morado oscuro */
-    margin-bottom: 0.75rem;
+    color: #4b5563; /* Gris oscuro cálido, reemplaza al negro puro */
+    margin-bottom: 1.5rem;
   }
 
-  .nombre-principal {
-    font-family: 'Playfair Display', Georgia, serif; /* Acá cambiarás la fuente después */
-    font-size: 3.75rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: 0.025em;
-    color: #7e22ce; /* Morado intermedio */
-    text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
-  }
+.nombre-principal {
+    font-family: 'Great Vibes';
+    font-size: 5.5rem; 
+    font-weight: 550;
+    line-height: 1.2; 
+    padding: 0.5rem 1rem; /* ESTA ES LA SOLUCIÓN: Le da aire a la caja para que no corte las letras */
+
+    /* Efecto de Oro Metálico */
+    background: linear-gradient(to right, #9c7842, #d2a32c, #edd968, #b89053, #fdf5c9, #9c7842);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: reflejo-oro 8s linear infinite;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.04));
+}
 
   .simbolo-union {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 3.75rem;
-    font-weight: 300;
-    color: #ffffff; /* Blanco */
-    text-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1; /* Corregido el error de tipeo */
+    color: #d2a32c; 
+    /* Magia visual: márgenes negativos arriba y abajo acercan los nombres sin mover el resto de la página */
+    margin: -1.5rem 0; 
   }
 
   /* DIVISOR GRÁFICO */
   .linea-divisor {
     height: 1px;
     flex: 1 1 0%;
-    background-color: rgba(192, 132, 252, 0.6);
+    background-color: rgba(192, 132, 252, 0.6); 
   }
 
   .rombo-divisor {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.4rem;
+    height: 0.4rem;
     transform: rotate(45deg);
     border: 1px solid #a855f7;
     background-color: rgba(233, 213, 255, 0.5);
   }
 
   .fecha-boda {
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 500;
-    color: #1f2937; /* Gris muy oscuro */
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    text-transform: uppercase; 
+    letter-spacing: 0.30em;    
+    font-weight: 600;
+    color: #4b5563; /* Mismo gris oscuro que el título superior */
   }
 
+.particulas-viento {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  
+  /* Tres capas de polvo dorado con distintos grosores y opacidades */
+  background-image: 
+    radial-gradient(circle, rgba(205, 44, 210, 0.5) 1px, transparent 1px),
+    radial-gradient(circle, rgba(135, 44, 210, 0.2) 2.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(88, 44, 210, 0.4) 1.5px, transparent 1.5px);
+  
+  /* Tamaños asimétricos (usar números primos evita que el patrón coincida y se vea cuadrado) */
+  background-size: 
+    43px 43px,
+    71px 71px,
+    113px 113px;
+    
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  
+  animation: viento-caotico 30s linear infinite;
+}
+
+@keyframes viento-caotico {
+  0% { 
+    background-position: 
+      0 0, 
+      20px 30px, 
+      50px 10px; 
+  }
+  100% { 
+    /* Cada capa vuela en un ángulo y velocidad ligeramente diferente */
+    background-position: 
+      150px -200px,  /* Capa rápida */
+      100px -100px,  /* Capa lenta y pesada */
+      -50px -150px;  /* Capa que cruza en otra dirección */
+  }
+}
+
+@keyframes viento-cinematico {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 100px -100px; } /* Movimiento suave en diagonal */
+}
   .indicador-scroll {
-    color: #4c1d95;
-    font-size: 11px;
+    font-family: 'Cormorant Garamond', serif;
+    color: #4c1d95; /* Morado elegante */
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.25em; /* Separación amplia estilo revista */
     font-weight: 600;
   }
+
+  /* =========================================
+   ANIMACIONES DE ENTRADA
+   ========================================= */
+
+@keyframes aparecer-desenfocado {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(15px); /* Entra levemente desde abajo */
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animacion-entrada {
+  opacity: 0; /* Mantiene oculto el texto hasta que arranca la animación */
+  animation: aparecer-desenfocado 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Escalonamiento de tiempos para que aparezcan uno por uno */
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 1.0s; }
+.delay-3 { animation-delay: 1.5s; }
+.delay-4 { animation-delay: 2.0s; }
+.delay-5 { animation-delay: 2.8s; }
+
+@keyframes reflejo-oro {
+  to { background-position: 200% center; }
+}
 </style>
