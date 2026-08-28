@@ -2,53 +2,90 @@
 // src/components/Countdown.astro
 ---
 
-<section class="flex flex-col items-center justify-center text-center px-4 py-8">
+<!-- Agregamos bg-purple-100 a la sección para el fondo morado general -->
+<!-- Sección del Contador (Va justo debajo de <Home />) -->
+<section id="seccion-contador" class="w-full relative flex flex-col items-center justify-center text-center px-6 py-12 bg-purple-100 difuminar-bordes oculto-scroll">
   
-  <span class="text-xs sm:text-sm font-semibold tracking-[0.25em] text-purple-800 uppercase mb-2">
-    Falta muy poco
-  </span>
-  
-  <h2 class="font-serif text-2xl sm:text-3xl text-gray-900 mb-6 font-normal">
-    Cuenta Regresiva
-  </h2>
+<!-- Flor Esquina Inferior Izquierda -->
+  <img 
+    src="Esquina2.png" 
+    alt="Decoración floral" 
+    class="absolute bottom-0 left-0 w-28 sm:w-36 opacity-60 z-0 pointer-events-none"
+  />
 
-  <!-- Contenedores de tiempo -->
-  <div class="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-xs">
+  <!-- Flor Esquina Superior Derecha (Rotada) -->
+  <img 
+    src="/Esquina1.png" 
+    alt="Decoración floral" 
+    class="absolute top-0 right-0 w-28 sm:w-36 opacity-60 z-0 pointer-events-none "
+  />
+
+  <div class=" bg-white/75 backdrop-blur-md border border-purple-100 shadow-xl shadow-purple-900/5 rounded-[1.5rem] w-full p-8 flex flex-col items-center relative overflow-hidden">
     
-    <!-- Días -->
-    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
-      <span id="days" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
-      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Días</span>
-    </div>
+    <!-- Brillo sutil interno -->
+    <div class="absolute -top-10 -right-10 w-32 h-32 bg-purple-50 rounded-full blur-2xl pointer-events-none"></div>
 
-    <!-- Horas -->
-    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
-      <span id="hours" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
-      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Hs</span>
-    </div>
 
-    <!-- Minutos -->
-    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
-      <span id="minutes" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
-      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Min</span>
-    </div>
+    <h2 class="font-['Great_Vibes'] text-4xl sm:text-5xl text-gray-800 mb-3 tracking-wide">
+      Cuenta regresiva
+    </h2>
 
-    <!-- Segundos -->
-    <div class="flex flex-col items-center justify-center bg-purple-50 border border-purple-200/70 p-3 rounded-2xl shadow-sm">
-      <span id="seconds" class="font-serif text-2xl sm:text-3xl font-bold text-purple-900 leading-none">00</span>
-      <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-medium mt-1">Seg</span>
-    </div>
+    <!-- Contenedores de tiempo -->
+    <div class="grid grid-cols-4 gap-2 w-full relative z-10">
+      
+      <!-- Días -->
+      <div class="flex flex-col items-center justify-center bg-purple-50/50 border border-purple-100 p-2 sm:p-4 rounded-2xl">
+        <span id="days" class="fuente-textos text-4xl sm:text-5xl font-semibold text-[#4c1d95] leading-none">00</span>
+        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-lg   mt-2">Días</span>
+      </div>
 
+      <!-- Horas -->
+      <div class="flex flex-col items-center justify-center bg-purple-50/50 border border-purple-100 p-2 sm:p-4 rounded-2xl">
+        <span id="hours" class="fuente-textos text-4xl sm:text-5xl font-semibold text-[#4c1d95] leading-none">00</span>
+        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-lg   mt-2">Hs</span>
+      </div>
+
+      <!-- Minutos -->
+      <div class="flex flex-col items-center justify-center bg-purple-50/50 border border-purple-100 p-2 sm:p-4 rounded-2xl">
+        <span id="minutes" class="fuente-textos text-4xl sm:text-5xl font-semibold text-[#4c1d95] leading-none">00</span>
+        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-lg   mt-2">Min</span>
+      </div>
+
+      <!-- Segundos -->
+      <div class="flex flex-col items-center justify-center bg-purple-50/50 border border-purple-100 p-2 sm:p-4 rounded-2xl">
+        <span id="seconds" class="fuente-textos text-4xl sm:text-5xl font-semibold text-[#4c1d95] leading-none">00</span>
+        <span class="text-[10px] sm:text-xs uppercase tracking-wider text-purple-600 font-lg   mt-2">Seg</span>
+      </div>
+
+    </div>
   </div>
-
-  <!-- Divisor sutil inferior -->
-  <div class="w-12 h-[1px] bg-purple-200 mt-8"></div>
-
 </section>
+
+<style>
+  /* Agregamos una clase unificada para aplicar Garamond a los textos y números */
+  .fuente-textos {
+    font-family: 'Cormorant Garamond';
+  }
+  .difuminar-bordes {
+    /* El fondo arranca transparente, se vuelve sólido al 10%, se mantiene sólido hasta el 90%, y vuelve a transparente al final */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .oculto-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .visible-scroll {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 
 <script>
   // DEFINÍ LA FECHA Y HORA DE TU BODA (Año, Mes - 1, Día, Hora, Minutos)
-  // Formato: Año, Mes (0 = Enero, 7 = Agosto, 11 = Diciembre), Día, Hora, Minutos
   const weddingDate = new Date(2026, 7, 28, 18, 0, 0).getTime();
 
   function updateCountdown() {
@@ -77,5 +114,27 @@
   }
 
   updateCountdown();
+
   setInterval(updateCountdown, 1000);
+
+  // Configuración del Intersection Observer para la aparición al hacer scroll
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      // Si la sección entra en la pantalla del usuario
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visible-scroll');
+        
+        // Dejamos de observarlo para que la animación solo ocurra la primera vez que bajan
+        observador.unobserve(entrada.target); 
+      }
+    });
+  }, {
+    threshold: 0.15 // Se activa cuando el 15% de la tarjeta ya asoma en la pantalla
+  });
+
+  // Buscamos la sección del contador y le conectamos el observador
+  const seccionContador = document.getElementById('seccion-contador');
+  if (seccionContador) {
+    observador.observe(seccionContador);
+  }
 </script>
