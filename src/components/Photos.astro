@@ -1,21 +1,30 @@
 ---
-// src/components/Gallery.astro
+// src/components/Photos.astro
 ---
 
-<section class="flex flex-col items-center justify-center w-full px-4 py-16">
-  
-  <!-- Encabezado -->
-  <div class="text-center mb-10">
-    <span class="etiqueta-galeria">Nuestros Momentos</span>
-    <h2 class="titulo-galeria">Un poco de nuestra historia</h2>
+<section id="seccion-fotos" class="w-full relative flex flex-col items-center justify-center px-6 py-20 bg-transparent">
+
+  <!-- FLORES DE FONDO -->
+  <img src="/Esquina2.png" alt="Decoración floral" class="absolute top-0 left-0 w-32 opacity-60 z-0 pointer-events-none" />
+  <img src="/Esquina1.png" alt="Decoración floral" class="absolute bottom-0 right-0 w-32 opacity-60 z-0 pointer-events-none " />
+
+  <!-- TARJETA FRONTAL (SOLO TEXTOS) -->
+  <div class="relative bg-white/15 backdrop-blur-md border border-white/0 shadow-2xl w-full max-w-sm sm:max-w-md p-8 flex flex-col items-center rounded-2xl z-10 mb-10 elemento-scroll oculto-scroll">
+    <!-- Ahora en cursiva -->
+    <h2 class="fuente-titulos text-center mb-3">
+      Nuestros momentos
+    </h2>
+    <!-- Ahora en Garamond, en mayúsculas y espaciado -->
+    <p class="fuente-textos  tracking-[0.2em] uppercase text-center font-bold text-sm sm:text-base">
+      Un poco de nuestra historia
+    </p>
   </div>
 
-  <!-- Grilla de Fotos (Collage) -->
-  <div class="grid grid-cols-2 gap-3 w-full max-w-md mx-auto">
+  <!-- GRILLA DE FOTOS -->
+  <div class="grid grid-cols-2 gap-4 w-full max-w-sm sm:max-w-md z-10 elemento-scroll oculto-scroll">
     
-    <!-- Foto 1: Principal (Ocupa el ancho completo) -->
+    <!-- Foto Principal (Ocupa las 2 columnas) -->
     <div class="contenedor-foto col-span-2 aspect-video sm:aspect-[4/3]">
-      <!-- Reemplazá el src por tu foto real en la carpeta public/ -->
       <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Foto principal de los novios" class="imagen-galeria" />
     </div>
 
@@ -30,50 +39,67 @@
     </div>
 
   </div>
-
 </section>
 
 <style>
-  /* =========================================
-     ESTILOS VISUALES - GALERÍA DE FOTOS
-     ========================================= */
-
-  .etiqueta-galeria {
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #6b21a8; /* Morado base */
-    display: block;
-    margin-bottom: 0.5rem;
+  /* Tipografías */
+  .fuente-titulos {
+    font-family: 'Great Vibes', cursive; 
+    font-size: 3.8rem; 
+    font-weight: 500;
+    color: #360382; 
+    line-height: 1;
   }
 
-  .titulo-galeria {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.25rem;
-    font-style: italic;
-    color: #4c1d95; /* Morado oscuro */
+  .fuente-textos {
+    font-family: 'Cormorant Garamond', serif;
   }
 
-  /* CONTENEDOR DE CADA FOTO */
+  /* Estilos centralizados para las fotos */
   .contenedor-foto {
+    width: 100%;
     overflow: hidden;
-    border-radius: 1rem; /* Bordes suaves */
-    box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1); /* Sombra elegante */
-    border: 1px solid rgba(216, 180, 254, 0.3); /* Borde sutil morado claro */
-    background-color: #f3f4f6; /* Fondo de carga gris muy claro */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    border: 2px solid rgba(255, 255, 255, 0.8);
   }
 
-  /* COMPORTAMIENTO DE LA IMAGEN */
   .imagen-galeria {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que la foto llene el espacio sin deformarse */
-    transition: transform 0.5s ease; /* Transición suave para el zoom */
+    object-fit: cover;
+    transition: transform 0.7s ease;
   }
 
-  /* Efecto zoom sutil al pasar el cursor o tocar en móviles */
-  .contenedor-foto:hover .imagen-galeria {
+  .imagen-galeria:hover {
     transform: scale(1.05);
   }
+
+  /* Animación de entrada */
+  .oculto-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.5s ease-out, transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .visible-scroll {
+    opacity: 1; 
+    transform: translateY(0);
+  }
 </style>
+
+<script>
+  const observadorFotos = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visible-scroll');
+        observadorFotos.unobserve(entrada.target); 
+      }
+    });
+  }, { threshold: 0.15 });
+
+  const elementos = document.querySelectorAll('#seccion-fotos .elemento-scroll');
+  elementos.forEach(el => {
+    observadorFotos.observe(el);
+  });
+</script>

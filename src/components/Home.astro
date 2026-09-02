@@ -14,23 +14,27 @@
   <span class="etiqueta-superior animacion-entrada delay-1">
   ¡Nos casamos!
   </span>
-  <!-- 2. Primer nombre -->
-  <h1 class="nombre-principal animacion-entrada delay-2">Carla</h1>
-  <!-- 3. Unión -->
-  <h3 class="simbolo-union animacion-entrada delay-3">y</h3>
-  <!-- 4. Segundo nombre -->
-  <h1 class="nombre-principal animacion-entrada delay-4">Gonzalo</h1>
+  
+  <!-- 2. Primer nombre (Agregado efecto hover y inline-block) -->
+  <h1 class="nombre-principal animacion-entrada delay-2 inline-block hover:scale-105 transition-transform duration-700 cursor-default mb-4">Gonzalo</h1>
+  
+  <!-- 3. Unión (Agregado efecto hover) -->
+  <h3 class="simbolo-union animacion-entrada delay-3 inline-block hover:scale-110 transition-transform duration-700 mb-10">&</h3>
+  
+  <!-- 4. Segundo nombre (Agregado efecto hover y inline-block) -->
+  <h1 class="nombre-principal animacion-entrada delay-4 inline-block hover:scale-105 transition-transform duration-700 cursor-default ">Roxana</h1>
+
 <!-- Divisor Botánico de Ramas -->
-<!-- Divisor Floral de Acuarela -->
+<!-- Divisor Floral de Acuarela (Agregado efecto hover) -->
 <div class="flex items-center justify-center w-full max-w-[320px] mt-0.1 mb-6 animacion-entrada delay-5">
   <img 
-    src="/Divisor2S.png" 
+    src="/alianzas.png" 
     alt="Detalle floral" 
-    class="w-full h-auto drop-shadow-sm opacity-90"
+    class="w-full h-auto drop-shadow-sm opacity-90 hover:scale-110 transition-transform duration-700"
   />
 </div>
 <p class="fecha-boda animacion-entrada delay-5">
-  28 . 08 . 26
+  26 . 09 . 26
 </p>
 
   </div>
@@ -51,7 +55,7 @@
      ========================================= */
 
   .portada-fondo {
-    background-image: url('/fondo2-flor1.jpg');
+    background-image: url('/Fondocambio.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -67,7 +71,7 @@
     text-transform: uppercase; 
     letter-spacing: 0.15em;    
     font-weight:600;
-    color: #3c3146; /* Gris oscuro cálido, reemplaza al negro puro */
+    color: #3c3146; 
     margin-bottom: 0.8rem;
   }
 
@@ -76,24 +80,23 @@
     font-size: 6rem; 
     font-weight: 580;
     line-height: 1.2; 
-    padding: 0.5rem 1rem; /* ESTA ES LA SOLUCIÓN: Le da aire a la caja para que no corte las letras */
-
+    padding: 0.5rem 1rem; 
+    
     /* Efecto de Oro Metálico */
     background: linear-gradient(to right, #9c7842, #d2a32c, #edd968, #b89053, #fdf5c9, #9c7842);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: reflejo-oro 8s linear infinite;
     filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.04));
+    /* La animación se movió a .animacion-entrada abajo para que no choque */
 }
 
   .simbolo-union {
     font-family: 'Great Vibes', cursive;
     font-size: 2rem;
     font-weight: 400;
-    line-height: 1; /* Corregido el error de tipeo */
+    line-height: 1; 
     color: #d2a32c; 
-    /* Magia visual: márgenes negativos arriba y abajo acercan los nombres sin mover el resto de la página */
     margin: -1.5rem 0; 
   }
 
@@ -118,7 +121,7 @@
     text-transform: uppercase; 
     letter-spacing: 0.30em;    
     font-weight: 1000;
-    color: #3c3146; /* Mismo gris oscuro que el título superior */
+    color: #3c3146; 
   }
 
 .particulas-viento {
@@ -127,13 +130,11 @@
   pointer-events: none;
   z-index: 0;
   
-  /* Tres capas de polvo dorado con distintos grosores y opacidades */
   background-image: 
     radial-gradient(circle, rgba(205, 44, 210, 0.5) 1px, transparent 1px),
     radial-gradient(circle, rgba(135, 44, 210, 0.2) 2.5px, transparent 2.5px),
     radial-gradient(circle, rgba(88, 44, 210, 0.4) 1.5px, transparent 1.5px);
   
-  /* Tamaños asimétricos (usar números primos evita que el patrón coincida y se vea cuadrado) */
   background-size: 
     43px 43px,
     71px 71px,
@@ -153,36 +154,35 @@
       50px 10px; 
   }
   100% { 
-    /* Cada capa vuela en un ángulo y velocidad ligeramente diferente */
     background-position: 
-      150px -200px,  /* Capa rápida */
-      100px -100px,  /* Capa lenta y pesada */
-      -50px -150px;  /* Capa que cruza en otra dirección */
+      150px -200px,  
+      100px -100px,  
+      -50px -150px;  
   }
 }
 
 @keyframes viento-cinematico {
   0% { background-position: 0px 0px; }
-  100% { background-position: 100px -100px; } /* Movimiento suave en diagonal */
+  100% { background-position: 100px -100px; } 
 }
   .indicador-scroll {
     font-family: 'Cormorant Garamond', serif;
-    color: #4c1d95; /* Morado elegante */
+    color: #4c1d95; 
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.25em; /* Separación amplia estilo revista */
+    letter-spacing: 0.25em; 
     font-weight: 600;
   }
 
   /* =========================================
-   ANIMACIONES DE ENTRADA
+   ANIMACIONES DE ENTRADA Y ORO (SOLUCIÓN)
    ========================================= */
 
 @keyframes aparecer-desenfocado {
   0% {
     opacity: 0;
     filter: blur(12px);
-    transform: translateY(15px); /* Entra levemente desde abajo */
+    transform: translateY(15px); 
   }
   100% {
     opacity: 1;
@@ -191,9 +191,20 @@
   }
 }
 
+@keyframes reflejo-oro {
+  to { background-position: 200% center; }
+}
+
 .animacion-entrada {
-  opacity: 0; /* Mantiene oculto el texto hasta que arranca la animación */
+  opacity: 0; 
   animation: aparecer-desenfocado 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Acá le decimos al navegador que si es el nombre, haga LAS DOS animaciones juntas sin anularse */
+.nombre-principal.animacion-entrada {
+  animation: 
+    aparecer-desenfocado 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards, 
+    reflejo-oro 8s linear infinite;
 }
 
 /* Escalonamiento de tiempos para que aparezcan uno por uno */
@@ -203,7 +214,4 @@
 .delay-4 { animation-delay: 2.0s; }
 .delay-5 { animation-delay: 2.8s; }
 
-@keyframes reflejo-oro {
-  to { background-position: 200% center; }
-}
 </style>

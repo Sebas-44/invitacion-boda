@@ -2,86 +2,86 @@
 // src/components/Itinerary.astro
 ---
 
-<section class="flex flex-col items-center justify-center w-full px-4 py-12">
-  
-  <!-- Encabezado -->
-  <div class="text-center mb-10">
-    <h2 class="titulo-itinerario">Itinerario de la noche</h2>
-    <p class="subtitulo-itinerario">Estos son algunos momentos que vamos a compartir</p>
-  </div>
+<!-- Agregamos 'difuminar-bordes' y 'oculto-scroll' a la section principal -->
+<section id="seccion-itinerario" class="w-full relative flex flex-col items-center justify-center px-6 py-20 bg-purple-50 difuminar-bordes oculto-scroll">
 
-  <!-- Contenedor Principal de la Línea de Tiempo -->
-  <div class="relative w-full max-w-md flex flex-col gap-10">
+  <!-- FLORES DE FONDO -->
+  <!--<img src="/Esquina2.png" alt="Decoración floral" class="absolute top-0 left-0 w-32 opacity-60 z-0 pointer-events-none" />-->
+  <img src="/Esquina1.png" alt="Decoración floral" class="absolute bottom-0 right-0 w-32 opacity-60 z-0 pointer-events-none " />
+
+      <!-- Encabezado animado individualmente -->
+    <div class="text-center mb-10 elemento-scroll oculto-scroll">
+      <h2 class="titulo-itinerario">Programa</h2>
+
+        <p class="fuente-textos text-2xl text-gray-600 leading-snug">
+          Compartí con nosotros momentos inolvidables<br>
+        
+        </p>
+
+    </div>
+
+  <!-- TARJETA TRANSPARENTE (Efecto Glassmorphism) -->
+  <div class="relative bg-white/15 backdrop-blur-md border border-white/0 shadow-2xl w-full max-w-sm sm:max-w-md p-10 sm:p-12 flex flex-col items-center  z-10">
     
-    <!-- Línea vertical central que conecta todo -->
-    <div class="linea-central absolute left-1/2 top-4 bottom-4 -translate-x-1/2"></div>
 
-    <!-- ITEM 1: Ceremonia -->
-    <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
-      <!-- Hora -->
-      <div class="text-right pr-2">
-        <span class="hora-evento">19:00</span>
+    <!-- Contenedor de la Línea de Tiempo Centrada -->
+    <div class="flex flex-col items-center w-full">
+      
+      <!-- ITEM 1: Recepción -->
+      <div class="flex flex-col items-center text-center elemento-scroll oculto-scroll">
+        <div class="circulo-icono mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 8v8M7 8v8M16 8v8M12 12v8m0 0h-3m3 0h3M9 4h6a2 2 0 012 2v2a2 2 0 01-2 2H9a2 2 0 01-2-2V6a2 2 0 012-2z"></path>
+          </svg>
+        </div>
+        <span class="hora-evento">18:30 hrs</span>
+        <h3 class="titulo-evento">Recepción</h3>
       </div>
-      <!-- Ícono -->
-      <div class="circulo-icono relative z-10">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <!-- Ícono de Anillos -->
-          <circle cx="9" cy="12" r="5" stroke-width="1.5"></circle>
-          <circle cx="15" cy="12" r="5" stroke-width="1.5"></circle>
-        </svg>
+
+      <!-- Línea conectora animada -->
+      <div class="linea-conectora elemento-scroll oculto-scroll"></div>
+
+      <!-- ITEM 2: Ceremonia -->
+      <div class="flex flex-col items-center text-center elemento-scroll oculto-scroll">
+        <div class="circulo-icono mb-3">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+          </svg>
+        </div>
+        <span class="hora-evento">19:30 hrs</span>
+        <h3 class="titulo-evento">Ceremonia</h3>
       </div>
-      <!-- Detalles -->
-      <div class="text-left pl-2">
-        <h3 class="titulo-evento">CEREMONIA</h3>
-        <p class="descripcion-evento">Comienzo de la celebración.</p>
-        <p class="lugar-evento">CAPILLA SAN IGNACIO</p>
+
+      <!-- Línea conectora animada -->
+      <div class="linea-conectora elemento-scroll oculto-scroll"></div>
+
+      <!-- ITEM 3: Caravana -->
+      <div class="flex flex-col items-center text-center elemento-scroll oculto-scroll">
+        <div class="circulo-icono mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16a2 2 0 100-4 2 2 0 000 4zm8 0a2 2 0 100-4 2 2 0 000 4z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.36 9.28L16.5 6h-9l-1.86 3.28A2 2 0 004 11v6h2v-1h12v1h2v-6a2 2 0 00-1.64-1.72z"></path>
+          </svg>
+        </div>
+        <span class="hora-evento">20:30 hrs</span>
+        <h3 class="titulo-evento">Caravana</h3>
       </div>
+
+      <!-- Línea conectora animada -->
+      <div class="linea-conectora elemento-scroll oculto-scroll"></div>
+
+      <!-- ITEM 4: Fiesta -->
+      <div class="flex flex-col items-center text-center elemento-scroll oculto-scroll">
+        <div class="circulo-icono mb-3">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </div>
+        <span class="hora-evento">21:30 hrs</span>
+        <h3 class="titulo-evento">Fiesta</h3>
+      </div>
+
     </div>
-
-    <!-- ITEM 2: Recepción -->
-    <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
-      <!-- Hora -->
-      <div class="text-right pr-2">
-        <span class="hora-evento">20:30</span>
-      </div>
-      <!-- Ícono -->
-      <div class="circulo-icono relative z-10">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <!-- Ícono de Plato y Cubiertos -->
-          <circle cx="12" cy="12" r="4" stroke-width="1.5"></circle>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 8v8M7 8v8M16 8v8"></path>
-        </svg>
-      </div>
-      <!-- Detalles -->
-      <div class="text-left pl-2">
-        <h3 class="titulo-evento">RECEPCION</h3>
-        <p class="descripcion-evento">Cocktail, brindis y bienvenida.</p>
-        <p class="lugar-evento">SALON VILLA MOON</p>
-      </div>
-    </div>
-
-    <!-- ITEM 3: Fiesta -->
-    <div class="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
-      <!-- Hora -->
-      <div class="text-right pr-2">
-        <span class="hora-evento">22:00</span>
-      </div>
-      <!-- Ícono -->
-      <div class="circulo-icono relative z-10">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <!-- Ícono de Fiesta / Destellos -->
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1M12 20v1M4.22 4.22l.707.707M19.07 19.07l.707.707M3 12h1M20 12h1M4.22 19.78l.707-.707M19.07 4.93l.707-.707"></path>
-          <circle cx="12" cy="12" r="3" stroke-width="1.5"></circle>
-        </svg>
-      </div>
-      <!-- Detalles -->
-      <div class="text-left pl-2">
-        <h3 class="titulo-evento">CENA Y FIESTA</h3>
-        <p class="descripcion-evento">A celebrar juntos.</p>
-        <p class="lugar-evento">SALON VILLA MOON</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -91,71 +91,123 @@
      ========================================= */
 
   .titulo-itinerario {
-    font-family: 'Playfair Display', Georgia, serif; /* Fuente elegante */
-    font-size: 2.25rem;
-    font-style: italic;
-    color: #581c87; /* Cambiar a #4d7c0f para verde oliva */
+    font-family: 'Great Vibes', cursive; 
+    font-size: 3rem;
+    font-weight: 500;
+    color: #4c1d95; 
+    line-height: 1;
     margin-bottom: 0.5rem;
+  }
+    .fuente-textos {
+    font-family: 'Cormorant Garamond';
   }
 
   .subtitulo-itinerario {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Cormorant Garamond';
     font-size: 1rem;
-    color: #4b5563; /* Gris oscuro */
+    letter-spacing: 0.15em;
+    color: #1b1d20; 
   }
-
-  /* LA LÍNEA CENTRAL */
-  .linea-central {
+  
+  .linea-conectora {
     width: 1px;
-    background-color: #d8b4fe; /* Cambiar a #cbd5e1 para gris sutil */
-    z-index: 0;
+    height: 3rem; 
+    background-color: #9ca3af; 
+    margin: 1rem 0; 
   }
 
-  /* CÍRCULOS DE LOS ÍCONOS */
   .circulo-icono {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    background-color: #ffffff;
-    border-radius: 9999px;
-    color: #7e22ce; /* Color del ícono */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(216, 180, 254, 0.3);
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: transparent; 
+    color: #4b5563; 
   }
 
-  /* TEXTO DE LA HORA (Izquierda) */
   .hora-evento {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.75rem;
-    font-style: italic;
-    color: #6b21a8; /* Cambiar a verde si preferís */
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #111827; 
   }
 
   /* TEXTOS DE LOS DETALLES (Derecha) */
   .titulo-evento {
-    font-family: sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.15em;
-    color: #111827;
-    margin-bottom: 0.2rem;
+    font-family: 'Cormorant Garamond';
+    font-size: 1.6rem; 
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase; 
+    color: #30006b;
+    margin-bottom: 0.15rem;
   }
 
-  .descripcion-evento {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #4b5563;
-    margin-bottom: 0.2rem;
+  /* EFECTO DE DIFUMINADO EN LOS BORDES */
+  .difuminar-bordes {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
   }
 
-  .lugar-evento {
-    font-family: sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: #6b7280;
-    text-transform: uppercase;
+  /* =========================================
+     ANIMACIÓN DE ENTRADA GENERAL DE LA SECCIÓN
+     ========================================= */
+  #seccion-itinerario.oculto-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 4s cubic-bezier(0.35, 1, 0.5, 1);
+  }
+
+  #seccion-itinerario.visible-scroll {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* =========================================
+     ANIMACIÓN DE ENTRADA INDIVIDUAL
+     ========================================= */
+  .elemento-scroll.oculto-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 3s ease-out, transform 5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .elemento-scroll.visible-scroll {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
+
+<script>
+  // Observador general para la sección del itinerario (para aplicar el difuminado/aparición)
+  const observadorSeccion = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visible-scroll');
+        observadorSeccion.unobserve(entrada.target); 
+      }
+    });
+  }, { threshold: 0.15 });
+
+  const seccionItinerario = document.getElementById('seccion-itinerario');
+  if (seccionItinerario) {
+    observadorSeccion.observe(seccionItinerario);
+  }
+
+  // Observador para los elementos internos individuales
+  const observadorItems = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visible-scroll');
+        observadorItems.unobserve(entrada.target); 
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const itemsAnimados = document.querySelectorAll('.elemento-scroll');
+  itemsAnimados.forEach(item => {
+    observadorItems.observe(item);
+  });
+</script>
