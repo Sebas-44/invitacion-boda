@@ -40,7 +40,7 @@
 
       <!-- 3. BOTONES DE ASISTENCIA -->
       <div class="flex gap-3 w-full mt-2 mb-2">
-        <button id="btn-si" class="btn-asistencia flex-1 border-2 border-[#4c1d95] bg-[#4c1d95] text-white rounded-xl py-2 fuente-textos text-lg font-semibold transition-all shadow-sm">
+        <button id="btn-si" class="btn-asistencia flex-1 border-2 border-[#360382] bg-[#360382] text-white rounded-xl py-2 fuente-textos text-lg font-semibold transition-all shadow-sm">
           Sí, asistiré
         </button>
         <button id="btn-no" class="btn-asistencia flex-1 border-2 border-purple-200 bg-white/70 text-purple-800 rounded-xl py-2 fuente-textos text-lg font-semibold transition-all hover:border-purple-300 shadow-sm">
@@ -66,11 +66,11 @@
       <div class="w-full h-[1px] bg-purple-200 my-4"></div>
 
       <!-- 5. BOTONES DE ENVÍO -->
-      <button id="enviar-novio" class="w-full bg-[#4c1d95]/85 text-white rounded-full py-3 fuente-textos text-sm sm:text-base font-bold tracking-[0.15em] uppercase hover:bg-[#a17c45] transition-all shadow-md">
+      <button id="enviar-novio" class="w-full bg-[#360382]/85 text-white rounded-full py-3 fuente-textos text-sm sm:text-base font-bold tracking-[0.15em] uppercase hover:bg-[#a17c45] transition-all shadow-md">
         Enviar al Novio
       </button>
       
-      <button id="enviar-novia" class="w-full bg-[#4c1d95]/85 text-white rounded-full py-3 fuente-textos text-sm sm:text-base font-bold tracking-[0.15em] uppercase hover:bg-[#a17c45] transition-all shadow-md">
+      <button id="enviar-novia" class="w-full bg-[#360382]/85 text-white rounded-full py-3 fuente-textos text-sm sm:text-base font-bold tracking-[0.15em] uppercase hover:bg-[#a17c45] transition-all shadow-md">
         Enviar a la Novia
       </button>
 
@@ -91,8 +91,7 @@
 
   .fuente-textos {
     font-family: 'Cormorant Garamond', serif;
-   nt-size: 1rem; 
-   font-zise: 1rem; /* Eliminamos el font-size de acá para que Tailwind haga su trabajo en el HTML */
+    font-size: 1rem; 
   }
 
   /* Animación de entrada */
@@ -103,12 +102,15 @@
   }
 
   .visible-scroll {
-    opacity: 1; /* Corregido: el máximo es 1 */
+    opacity: 1; 
     transform: translateY(0);
   }
 </style>
 
 <script>
+  // ACÁ ESTÁ TU URL DE GOOGLE APPS SCRIPT
+  const URL_GOOGLE_SHEET = "https://script.google.com/macros/s/AKfycbylE1-Q4lxOXJGi4zbFa9j2Nw1RYSIMyqWFvw7Ycj86xrGvnXVbO8pmlbz6bRKItk1lLQ/exec"; 
+
   const telefonoNovio = "5493886823337"; 
   const telefonoNovia = "5493884427229";
 
@@ -133,12 +135,8 @@
     for (let i = 1; i <= numAcompanantes; i++) {
       const input = document.createElement('input');
       input.type = 'text';
-      // Mantenemos las clases base de Tailwind
       input.className = 'input-extra w-full bg-white/50 border border-purple-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-[#4c1d95] text-lg placeholder:text-gray-500 transition-colors';
-      
-      // SOLUCIÓN ASTRO: Aplicamos la tipografía directamente al elemento generado
       input.style.fontFamily = "'Cormorant Garamond', serif";
-      
       input.placeholder = `Nombre del Acompañante ${i}`;
       contenedorNombresExtra.appendChild(input);
     }
@@ -146,18 +144,18 @@
 
   function actualizarBotones() {
     if (asiste) {
-      btnSi.classList.add(...estiloActivo);
-      btnSi.classList.remove(...estiloInactivo);
-      btnNo.classList.add(...estiloInactivo);
-      btnNo.classList.remove(...estiloActivo);
-      contenedorAcompanantes.style.display = 'block';
+      btnSi?.classList.add(...estiloActivo);
+      btnSi?.classList.remove(...estiloInactivo);
+      btnNo?.classList.add(...estiloInactivo);
+      btnNo?.classList.remove(...estiloActivo);
+      if (contenedorAcompanantes) contenedorAcompanantes.style.display = 'block';
       renderizarCamposAcompanantes(); 
     } else {
-      btnNo.classList.add(...estiloActivo);
-      btnNo.classList.remove(...estiloInactivo);
-      btnSi.classList.add(...estiloInactivo);
-      btnSi.classList.remove(...estiloActivo);
-      contenedorAcompanantes.style.display = 'none';
+      btnNo?.classList.add(...estiloActivo);
+      btnNo?.classList.remove(...estiloInactivo);
+      btnSi?.classList.add(...estiloInactivo);
+      btnSi?.classList.remove(...estiloActivo);
+      if (contenedorAcompanantes) contenedorAcompanantes.style.display = 'none';
       contenedorNombresExtra.innerHTML = ""; 
     }
   }
@@ -214,14 +212,53 @@
     }
   }
 
-  document.getElementById('enviar-novio')?.addEventListener('click', () => {
+  // FUNCIÓN INSTANTÁNEA: Sin demoras, enviamos de fondo y abrimos WhatsApp de golpe
+  function procesarEnvio(telefono) {
     const mensaje = armarMensaje();
-    if (mensaje) window.open(`https://wa.me/${telefonoNovio}?text=${mensaje}`, '_blank');
+    if (!mensaje) return;
+
+    const urlWhatsApp = `https://wa.me/${telefono}?text=${mensaje}`;
+    const nombrePrincipal = inputPrincipal.value.trim();
+    let totalPersonas = 1;
+    const nombresArr = [];
+
+    if (asiste) {
+      const inputsExtra = document.querySelectorAll('.input-extra');
+      inputsExtra.forEach((input) => {
+        const valor = (input as HTMLInputElement).value.trim();
+        if (valor) nombresArr.push(valor);
+      });
+      totalPersonas += nombresArr.length;
+    }
+
+    const params = new URLSearchParams();
+    params.append('nombre', nombrePrincipal);
+    params.append('asiste', asiste ? "Sí" : "No");
+    params.append('cantidad', asiste ? totalPersonas.toString() : "0");
+    params.append('acompanantes', asiste && nombresArr.length > 0 ? nombresArr.join(', ') : "-");
+
+    // 1. DISPARAMOS A GOOGLE SHEETS (Con 'keepalive' aseguramos que no se cancele)
+    fetch(URL_GOOGLE_SHEET, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true, // Magia para que se envíe sin importar que cambiemos de pestaña
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params
+    }).catch(() => {}); // Ignoramos posibles alertas de red silenciosamente
+
+    // 2. ABRIMOS WHATSAPP INMEDIATAMENTE
+    window.open(urlWhatsApp, '_blank');
+  }
+
+  // Asignamos la función directamente al clic sin cambiar textos ni bloquear botones
+  document.getElementById('enviar-novio')?.addEventListener('click', () => {
+    procesarEnvio(telefonoNovio);
   });
 
   document.getElementById('enviar-novia')?.addEventListener('click', () => {
-    const mensaje = armarMensaje();
-    if (mensaje) window.open(`https://wa.me/${telefonoNovia}?text=${mensaje}`, '_blank');
+    procesarEnvio(telefonoNovia);
   });
 
   const observadorRSVP = new IntersectionObserver((entradas) => {

@@ -4,15 +4,17 @@
 
 <section id="seccion-cierre" class="w-full relative flex flex-col items-center justify-center px-6 py-24 bg-transparent overflow-hidden min-h-[60vh]">
   
-  <!-- NUEVA IMAGEN DE FONDO INFERIOR -->
-  <!-- Reemplazá "/fondo-cierre.png" por tu imagen real -->
+  <!-- DEGRADADO MORADO (Ahora está primero, por lo tanto, queda en el fondo) -->
+  <div class="absolute bottom-0 left-0 w-full h-[35vh] bg-gradient-to-t from-[#4c1d95] via-[#4c1d95]/20 to-transparent z-0 pointer-events-none"></div>
+
+  <!-- IMAGEN DE FONDO INFERIOR (Ahora está por encima del degradado) -->
   <img 
     src="/Fondocambio.jpg" 
     alt="Fondo floral decorativo" 
     class="absolute bottom-0 left-0 w-full h-auto max-h-[50vh] object-cover object-bottom opacity-60 z-0 pointer-events-none" 
   />
 
-  <!-- Contenedor Principal (z-10 para estar por encima del fondo) -->
+  <!-- Contenedor Principal (z-10 para estar por encima de los fondos) -->
   <div class="flex flex-col items-center justify-center z-10 w-full max-w-lg text-center elemento-scroll oculto-scroll">
 
     <!-- Mensaje de invitación -->
@@ -22,7 +24,7 @@
 
     <!-- Nombres de los novios con el efecto dorado exacto del Home -->
     <div class="flex flex-col items-center justify-center mb-6">
-      <h2 class="nombre-oro" mb-6 >Gonzalo</h2>
+      <h2 class="nombre-oro">Gonzalo</h2>
       <span class="simbolo-union">&</span>
       <h2 class="nombre-oro">Roxana</h2>
     </div>
@@ -40,8 +42,8 @@
 
   <!-- Footer / Créditos (z-10 para que los enlaces funcionen) -->
   <div class="absolute bottom-6 text-center w-full z-10 elemento-scroll oculto-scroll retraso-footer">
-    <p class="fuente-footer text-gray-600 italic font-medium">
-      Diseñado con <span class="text-[#b89053]">♥</span> por <a href="https://instagram.com/tu_usuario" target="_blank" class="hover:text-[#4c1d95] transition-colors drop-shadow-sm">@tuinstagram</a>
+    <p class="fuente-footer text-purple-100 italic font-medium drop-shadow-sm">
+      Diseñado con <span class="text-[#b89053]">♥</span> por <a href="https://instagram.com/tu_usuario" target="_blank" class="hover:text-white transition-colors">@tuinstagram</a>
     </p>
   </div>
 
