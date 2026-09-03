@@ -20,27 +20,28 @@ import Closing from '../components/Closing.astro';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¡Nos Casamos! - Gonzalo & Roxana</title>
+    <title>Nuestra Boda - Gonzalo & Roxana</title>
 
-    <!-- 1. EL LOGO DE LA PESTAÑA (Favicon) -->
+    <!-- Logo de la pestaña del navegador -->
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <!-- 2. LA TARJETA PARA COMPARTIR EN WHATSAPP (Open Graph) -->
+    <!-- ==========================================
+         CONFIGURACIÓN PARA LA VISTA PREVIA EN WHATSAPP
+         ========================================== -->
     <meta property="og:title" content="¡Nos Casamos! - Gonzalo & Roxana" />
-    <meta property="og:description" content="Estás invitado a celebrar este momento tan especial con nosotros. ¡Confirmá tu asistencia!" />
+    <meta property="og:description" content="Estás invitado a celebrar este momento tan especial con nosotros. ¡Hacé clic para ver la invitación y confirmar asistencia!" />
     
-    <!-- IMPORTANTE: Cuando subas tu página a internet, reemplazá "https://tupagina.com" por tu link real -->
-    <meta property="og:image" content="SobreInicio.png" />
-    <meta property="og:url" content="https://tupagina.com" />
+    <!-- LA IMAGEN QUE VA A APARECER EN WHATSAPP -->
+    <!-- ¡IMPORTANTE! Reemplazá "https://tu-link-real.com" por el link definitivo de tu web -->
+    <meta property="og:image" content="https://tu-link-real.com/miniatura.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+    <!-- EL LINK DE TU PÁGINA -->
+    <meta property="og:url" content="https://invitacion-boda-neon.vercel.app/" />
     <meta property="og:type" content="website" />
-
-    <!-- Metaetiquetas extra para Twitter/X por si acaso -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="¡Nos Casamos! - Gonzalo & Roxana" />
-    <meta name="twitter:description" content="Estás invitado a celebrar este momento tan especial con nosotros." />
-    <meta name="twitter:image" content="SobreInicio.png" />
   </head>
-
   <!-- Fondo exterior y bloqueo de scroll inicial -->
   <body class="bg-gray-900 min-h-screen flex justify-center py-6 px-4 overflow-hidden" id="cuerpo-pagina">
 
