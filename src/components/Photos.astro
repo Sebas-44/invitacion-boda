@@ -23,19 +23,19 @@
   <!-- GRILLA DE FOTOS -->
   <div class="grid grid-cols-2 gap-4 w-full max-w-sm sm:max-w-md z-10 elemento-scroll oculto-scroll">
     
-    <!-- Foto Principal (Ocupa las 2 columnas) -->
-    <div class="contenedor-foto col-span-2 aspect-video sm:aspect-[4/3]">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Foto principal de los novios" class="imagen-galeria" />
+    <!-- Foto Principal Vertical (Ocupa las 2 columnas, con aspecto vertical 4/5) -->
+    <div class="contenedor-foto col-span-2 aspect-[4/5] sm:aspect-[3/4]">
+      <img src="Foto4.jpeg" alt="Foto principal de los novios" class="imagen-galeria foto-vertical" />
     </div>
 
     <!-- Foto 2: Izquierda -->
     <div class="contenedor-foto aspect-square">
-      <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=400&auto=format&fit=crop" alt="Momento especial" class="imagen-galeria" />
+      <img src="Foto1.jpeg" alt="Momento especial" class="imagen-galeria" />
     </div>
 
     <!-- Foto 3: Derecha -->
     <div class="contenedor-foto aspect-square">
-      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400&auto=format&fit=crop" alt="Momento divertido" class="imagen-galeria" />
+      <img src="Foto3.jpeg" alt="Momento divertido" class="imagen-galeria" />
     </div>
 
   </div>
@@ -69,6 +69,11 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.7s ease;
+  }
+
+  /* NUEVO: Fuerza el recorte hacia la parte superior para fotos verticales */
+  .foto-vertical {
+    object-position: top;
   }
 
   .imagen-galeria:hover {
