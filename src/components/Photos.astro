@@ -8,16 +8,28 @@
   <img src="/Esquina2.png" alt="Decoración floral" class="absolute top-0 left-0 w-32 opacity-60 z-0 pointer-events-none" />
   <img src="/Esquina1.png" alt="Decoración floral" class="absolute bottom-0 right-0 w-32 opacity-60 z-0 pointer-events-none " />
 
-  <!-- TARJETA FRONTAL (SOLO TEXTOS) -->
+<!-- TARJETA FRONTAL (SOLO TEXTOS) -->
   <div class="relative bg-white/15 backdrop-blur-md border border-white/0 shadow-2xl w-full max-w-sm sm:max-w-md p-8 flex flex-col items-center rounded-2xl z-10 mb-10 elemento-scroll oculto-scroll">
-    <!-- Ahora en cursiva -->
-    <h2 class="fuente-titulos text-center mb-3">
+    
+    <!-- Título -->
+    <h2 class="fuente-titulos text-center mb-2.5">
       Nuestros momentos
     </h2>
-    <!-- Ahora en Garamond, en mayúsculas y espaciado -->
-    <p class="fuente-textos  tracking-[0.2em] uppercase text-center font-bold text-sm sm:text-base">
-      Un poco de nuestra historia
+    
+    <!-- Versículo Bíblico -->
+    <!-- leading-tight: junta las líneas | italic: cursiva elegante | text-gray-800: oscurece para dar grosor -->
+    <p class="fuente-textos text-center font-bold italic leading-tight text-gray-600 sm:px-2">
+      "Alguien que está solo puede ser atacado y vencido, 
+      pero si son dos, se ponen de espalda con espalda y vencen; 
+      mejor todavía si son tres, porque una cuerda triple no se corta fácilmente."
     </p>
+    
+    <!-- Referencia del Versículo -->
+    <!-- tracking-widest: separa las letras | text-sm: achica un poco el tamaño -->
+    <p class="fuente-textos uppercase text-center font-semibold mt-4 text-[#360382] tracking-widest">
+      Eclesiastés 4:12 NTV
+    </p>
+    
   </div>
 
   <!-- GRILLA DE FOTOS -->
@@ -53,6 +65,8 @@
 
   .fuente-textos {
     font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; 
+ 
   }
 
   /* Estilos centralizados para las fotos */
